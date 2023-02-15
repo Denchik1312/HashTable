@@ -9,19 +9,20 @@ import java.util.Set;
 
 public class LetterFormer {
 
-    public void formLetter1(Set<String> keysChanged, Set<String> keysPrev, Set<String> keysNew){
+    public void formLetter1(Set<String> keysChanged, Set<String> keysPrev, Set<String> keysNew) {
         List<String> lines = Arrays.asList(
                 "Здравствуйте, дорогая и.о. секретаря,\nЗа последние сутки во вверенных Вам сайтах произошли следующие изменения:\n",
                 "Исчезли следующие страницы: " + String.join(", ", keysPrev),
                 "Появились следующие новые страницы: " + String.join(", ", keysNew),
                 "Изменились следующие страницы: " + String.join(", ", keysChanged),
                 "\nС уважением,\nавтоматизированная система мониторинга.");
-        Path letter1Path = Paths.get("letter1.txt");
+        Path letter1Path = Paths.get("1.txt");
         try {
             Files.write(letter1Path, lines, StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
 }

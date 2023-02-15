@@ -1,15 +1,15 @@
 import java.util.*;
 
 public class Tables {
-    HashMap<String, String> prevTable;
+    HashMap<String, String> Table;
     HashMap<String, String> newTable;
 
     Tables(){
-        prevTable = new HashMap<>();
+        Table = new HashMap<>();
         newTable = new HashMap<>();
-        prevTable.put("url", "html3");
-        prevTable.put("url2", "html2");
-        prevTable.put("url1", "html1");
+        Table.put("url1", "html1");
+        Table.put("url2", "html2");
+        Table.put("url3", "html3");
         newTable.put("url2", "html22");
         newTable.put("url4", "html4");
         newTable.put("url5", "html5");
@@ -17,7 +17,7 @@ public class Tables {
 
     private Set<String> intersectionKeys(){
         Set<String> newKeys = new HashSet<>(newTable.keySet());
-        Set<String> intersectionKeys = new HashSet<>(prevTable.keySet());
+        Set<String> intersectionKeys = new HashSet<>(Table.keySet());
         intersectionKeys.retainAll(newKeys);
         return intersectionKeys;
     }
@@ -26,7 +26,7 @@ public class Tables {
         Set<String> keysWithChangedValues = new HashSet<>();
         Set<String> intersectionKeys = intersectionKeys();
         for (String key:intersectionKeys) {
-            if (!prevTable.get(key).equals(newTable.get(key))){
+            if (!Table.get(key).equals(newTable.get(key))){
                 keysWithChangedValues.add(key);
             }
         }
@@ -34,7 +34,7 @@ public class Tables {
     }
 
     public Set<String> keysInPrevOnly(){
-        Set<String> prevKeys = new HashSet<>(prevTable.keySet());
+        Set<String> prevKeys = new HashSet<>(Table.keySet());
         prevKeys.removeAll(intersectionKeys());
         return prevKeys;
     }
